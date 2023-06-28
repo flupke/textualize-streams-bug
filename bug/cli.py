@@ -32,7 +32,7 @@ class CounterApp(App):
         self.run_worker(run_process("python", "counter.py", print_function=view.write))
 
 
-def gui_counter():
+def counter_gui():
     app = CounterApp()
     app.run()
 
@@ -70,3 +70,18 @@ async def do_phoenix():
 
 def phoenix():
     asyncio.run(do_phoenix())
+
+
+class PhoenixApp(App):
+    def compose(self):
+        yield TextLog()
+
+    def on_ready(self):
+        view = self.query_one(TextLog)
+        self.run_worker(run_phoenix(view.write))
+        self.run_worker(run_poller(view.write))
+
+
+def phoenix_gui():
+    app = PhoenixApp()
+    app.run()

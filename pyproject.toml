@@ -12,8 +12,9 @@ aiohttp = "^3.8.4"
 
 [tool.poetry.scripts]
 counter = "bug.cli:counter"
-gui_counter = "bug.cli:gui_counter"
+counter_gui = "bug.cli:counter_gui"
 phoenix = "bug.cli:phoenix"
+phoenix_gui = "bug.cli:phoenix_gui"
 
 [build-system]
 requires = ["poetry-core"]
