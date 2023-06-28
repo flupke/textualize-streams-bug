@@ -8,6 +8,9 @@ packages = [{include = "bug"}]
 [tool.poetry.dependencies]
 python = "^3.11"
 
+[tool.poetry.scripts]
+counter = "bug.cli:counter"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
