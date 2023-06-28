@@ -8,10 +8,12 @@ packages = [{include = "bug"}]
 [tool.poetry.dependencies]
 python = "^3.11"
 textual = {extras = ["dev"], version = "^0.28.1"}
+aiohttp = "^3.8.4"
 
 [tool.poetry.scripts]
 counter = "bug.cli:counter"
 gui_counter = "bug.cli:gui_counter"
+phoenix = "bug.cli:phoenix"
 
 [build-system]
 requires = ["poetry-core"]
