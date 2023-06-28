@@ -50,7 +50,7 @@ async def run_phoenix(print_function: PrintFunction):
 
 
 async def run_poller(print_function: PrintFunction):
-    timeout = aiohttp.ClientTimeout(total=5)
+    timeout = aiohttp.ClientTimeout(total=1)
     while True:
         try:
             async with aiohttp.ClientSession(timeout=timeout) as session:
@@ -62,6 +62,8 @@ async def run_poller(print_function: PrintFunction):
         except aiohttp.client_exceptions.ClientConnectorError:
             print_function("Server not ready, retrying...")
             await asyncio.sleep(1)
+        except asyncio.TimeoutError:
+            print_function("Timeout, retrying...")
 
 
 async def do_phoenix():
