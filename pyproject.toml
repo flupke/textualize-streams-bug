@@ -7,9 +7,11 @@ packages = [{include = "bug"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
+textual = {extras = ["dev"], version = "^0.28.1"}
 
 [tool.poetry.scripts]
 counter = "bug.cli:counter"
+gui_counter = "bug.cli:gui_counter"
 
 [build-system]
 requires = ["poetry-core"]
