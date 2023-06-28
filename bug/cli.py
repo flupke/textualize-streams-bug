@@ -1,3 +1,4 @@
+import os
 from typing import Callable, Any
 import asyncio
 
@@ -12,7 +13,11 @@ PrintFunction = Callable[[str], Any]
 
 async def run_process(*args, print_function: PrintFunction, cwd=None):
     proc = await asyncio.create_subprocess_exec(
-        *args, stdout=asyncio.subprocess.PIPE, cwd=cwd
+        *args,
+        stdout=asyncio.subprocess.PIPE,
+        stderr=asyncio.subprocess.STDOUT,
+        cwd=cwd,
+        preexec_fn=os.setpgrp,
     )
     if proc.stdout is not None:
         async for line in proc.stdout:
